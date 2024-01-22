@@ -41,8 +41,4 @@ public class Schedule {
         this.title = title;
         this.contents = contents;
     }
-
-    public boolean isPasswordMatch(String password){
-        return this.password.equals(password);
-    }
 }

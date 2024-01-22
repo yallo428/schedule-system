@@ -23,8 +23,7 @@ public class ScheduleService {
 
     @Transactional(readOnly = true)
     public List<ResponseSchedule> findAll() {
-        List<Schedule> all = scheduleRepository.findAll();
-        return all.stream().map(ResponseSchedule::new).toList();
+        return scheduleRepository.findAll();
     }
 
     public void save(CreateRequestSchedule dto) {
@@ -37,25 +36,24 @@ public class ScheduleService {
     }
 
 
-    public ResponseSchedule update(Long id, UpdateRequestSchedule dto) {
+    public ResponseSchedule update(Long id, UpdateRequestSchedule requestDTO) {
         Schedule schedule = scheduleRepository.findOne(id);
         EntityNullCheck(schedule);
 
         schedule.update(
-                dto.getUserName(),
-                dto.getPassword(),
-                dto.getTitle(),
-                dto.getContents());
+                requestDTO.getUserName(),
+                requestDTO.getPassword(),
+                requestDTO.getTitle(),
+                requestDTO.getContents());
 
         return new ResponseSchedule(schedule);
     }
 
     public void delete(Long scheduleId, String password) {
-        Schedule schedule = scheduleRepository.findOne(scheduleId);
-        EntityNullCheck(schedule);
+        String userPassword = scheduleRepository.findPassword(scheduleId);
 
-        if (schedule.isPasswordMatch(password)) {
-            scheduleRepository.delete(schedule);
+        if (password.equals(userPassword)) {
+            scheduleRepository.delete(scheduleId);
         }else{
             throw new PasswordMatchException();
         }

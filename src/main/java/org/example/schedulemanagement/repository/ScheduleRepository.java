@@ -2,6 +2,7 @@ package org.example.schedulemanagement.repository;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.example.schedulemanagement.dto.response.ResponseSchedule;
 import org.example.schedulemanagement.entity.Schedule;
 import org.springframework.stereotype.Repository;
 
@@ -13,20 +14,24 @@ public class ScheduleRepository {
 
     private final EntityManager em;
 
-    public void save(Schedule schedule){
+    public void save(Schedule schedule) {
         em.persist(schedule);
     }
 
-    public Schedule findOne(Long id){
+    public Schedule findOne(Long id) {
         return em.find(Schedule.class, id);
     }
 
-    public List<Schedule> findAll(){
+    public List<ResponseSchedule> findAll() {
         return em.createQuery("select s from Schedule s order by date desc", Schedule.class)
-             .getResultList();
+                .getResultList().stream().map(ResponseSchedule::new).toList();
     }
 
-    public void delete(Schedule schedule){
-        em.remove(schedule);
+    public void delete(Long id) {
+        em.remove(id);
+    }
+
+    public String findPassword(Long id) {
+        return em.find(Schedule.class, id).getPassword();
     }
 }
