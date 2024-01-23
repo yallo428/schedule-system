@@ -25,10 +25,11 @@ Spring + JPA를 이용한 간단한 스케쥴 작성
         - 선택한 일정의 `비밀번호`와 요청할 때 함께 보낸 `비밀번호`가 일치할 경우에만 삭제가 가능합니다.
 
 # ERD
-![Alt text](image-4.png)
+![image](https://github.com/yallo428/schedule-system/assets/116006875/f0858cc3-a313-4aa3-9566-88d5eefd388c)
+
 
 # USE CASE
-![Alt text](image-5.png)
+![image](https://github.com/yallo428/schedule-system/assets/116006875/8dc89de9-8032-42e7-8527-1efef039a856)
 
 # API 명세서
 ![image](https://github.com/yallo428/schedule-system/assets/116006875/db43ebf3-0855-4180-a8d6-d7a0fbffbe07)
