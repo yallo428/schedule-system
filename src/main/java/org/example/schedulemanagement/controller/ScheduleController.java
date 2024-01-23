@@ -26,10 +26,16 @@ public class ScheduleController {
         return new ResponseEntity<>("가입이 성공되었습니다", HttpStatus.CREATED);
     }
 
-    @GetMapping("/create")
+    @GetMapping("/scheduleList")
     public ResponseEntity<List<ResponseSchedule>> schedules() {
         List<ResponseSchedule> all = scheduleService.findAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
+    }
+
+    @GetMapping("/schedule")
+    public ResponseEntity<ResponseSchedule> schedule(@RequestParam Long id) {
+        ResponseSchedule schedule = scheduleService.find(id);
+        return new ResponseEntity<>(schedule, HttpStatus.OK);
     }
 
     @PutMapping("/{id}/update")

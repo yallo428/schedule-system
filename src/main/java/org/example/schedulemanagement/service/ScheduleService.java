@@ -26,6 +26,11 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public ResponseSchedule find(Long id){
+        return scheduleRepository.findOne(id);
+    }
+
     public void save(CreateRequestSchedule dto) {
         Schedule schedule = new Schedule(
                 dto.getUserName(),
