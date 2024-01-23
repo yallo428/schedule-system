@@ -18,9 +18,8 @@ public class ScheduleRepository {
         em.persist(schedule);
     }
 
-    public ResponseSchedule findOne(Long id) {
-        Schedule schedule = em.find(Schedule.class, id);
-        return new ResponseSchedule(schedule);
+    public Schedule findOne(Long id) {
+        return em.find(Schedule.class, id);
     }
 
     public List<ResponseSchedule> findAll() {

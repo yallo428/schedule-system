@@ -28,7 +28,8 @@ public class ScheduleService {
 
     @Transactional(readOnly = true)
     public ResponseSchedule find(Long id){
-        return scheduleRepository.findOne(id);
+        Schedule schedule = scheduleRepository.findOne(id);
+        return new ResponseSchedule(schedule);
     }
 
     public void save(CreateRequestSchedule dto) {
