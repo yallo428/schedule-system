@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.exception.PasswordMatchException;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -16,11 +18,11 @@ public class Schedule {
     @Column(name = "schedule_id")
     private Long id;
 
-    private String userName;
-    private String password;
-
     private String title;
     private String contents;
+
+    private String userName;
+    private String password;
 
     private LocalDateTime date;
 
@@ -32,13 +34,10 @@ public class Schedule {
         this.date = LocalDateTime.now();
     }
 
-    public void update(String userName, String password, String title, String contents){
-        if(!isPasswordMatch(password)){
-            throw new PasswordMatchException();
-        }
+    public void update(String userName, String title, String contents){
         this.userName = userName;
-        this.password = password;
         this.title = title;
         this.contents = contents;
     }
+
 }

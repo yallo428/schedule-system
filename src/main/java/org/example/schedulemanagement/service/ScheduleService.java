@@ -39,12 +39,7 @@ public class ScheduleService {
     public ResponseSchedule update(Long id, UpdateRequestSchedule requestDTO) {
         Schedule schedule = scheduleRepository.findOne(id);
         EntityNullCheck(schedule);
-
-        schedule.update(
-                requestDTO.getUserName(),
-                requestDTO.getPassword(),
-                requestDTO.getTitle(),
-                requestDTO.getContents());
+        schedule.update(requestDTO.getUserName(), requestDTO.getTitle(), requestDTO.getContents());
 
         return new ResponseSchedule(schedule);
     }

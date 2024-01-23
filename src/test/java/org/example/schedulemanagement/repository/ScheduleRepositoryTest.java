@@ -1,5 +1,6 @@
 package org.example.schedulemanagement.repository;
 
+import org.example.schedulemanagement.entity.Schedule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,10 @@ class ScheduleRepositoryTest {
 
     @Test
     @DisplayName("데이터 저장")
-    @Rollback(false)
+
     void save() {
+        Schedule schedule = new Schedule("a", "a", "a", "a");
+        scheduleRepository.save(schedule);
     }
 
 }
