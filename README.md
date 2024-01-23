@@ -32,4 +32,5 @@ Spring + JPA를 이용한 간단한 스케쥴 작성
 ![image](https://github.com/yallo428/schedule-system/assets/116006875/8dc89de9-8032-42e7-8527-1efef039a856)
 
 # API 명세서
-![image](https://github.com/yallo428/schedule-system/assets/116006875/db43ebf3-0855-4180-a8d6-d7a0fbffbe07)
+![image](https://github.com/yallo428/schedule-system/assets/116006875/f6bd0b8e-8841-48fd-b094-2975eebe977d)
+
